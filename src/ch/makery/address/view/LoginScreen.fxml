@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ch.makery.address.Login">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Button layoutX="272.0" layoutY="225.0" mnemonicParsing="false" text="Entrar" />
+    <TextField fx:id="userName" fx:id="usrName" layoutX="200.0" layoutY="100.0" prefWidth="200.0" promptText="Insira seu Prontuário..." />
+    <TextField fx:id="password" layoutX="200.0" layoutY="164.0" prefWidth="200.0" promptText="Insira sua Senha..." visible="true" />
+    <Label layoutX="200.0" layoutY="76.0" text="Login" />
+    <Label layoutX="200.0" layoutY="142.0" text="Password" />
+    <Text fontSmoothingType="LCD" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema de Matrícula" textAlignment="CENTER" AnchorPane.leftAnchor="125.91" AnchorPane.rightAnchor="-125.91">
+      <font>
+        <Font name="Arial Bold" size="35.0" />
+      </font>
+    </Text>
+  </children>
+</AnchorPane>
