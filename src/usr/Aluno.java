@@ -4,7 +4,11 @@ package usr;
  * 
  */
 public class Aluno extends Usuario {
-	int prontuario;
+	private String prontuario;
+	
+	public Aluno(String prnt){
+		this.setProntuario(prnt);
+	}
 	
 	public void solicitarMatricula(){
 		// TODO
@@ -30,6 +34,14 @@ public class Aluno extends Usuario {
 	public void consultarTurmas() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public String getProntuario() {
+		return prontuario;
+	}
+
+	public void setProntuario(String prontuario) {
+		this.prontuario = prontuario;
 	}
 
 }
