@@ -5,8 +5,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		SqlConnector sql = new SqlConnector("myAddress");
-		
-		Usuario loggedUser = new Aluno();
+		//TEST THIS COMMENT IS JUST A TEST
+
 	}
 
 }
