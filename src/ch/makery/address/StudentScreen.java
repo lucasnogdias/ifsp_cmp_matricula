@@ -12,6 +12,9 @@ public class StudentScreen {
 
     @FXML
     private ResourceBundle resources;
+    
+    @FXML
+    private AnchorPane requestPanel;
 
     @FXML
     private URL location;
