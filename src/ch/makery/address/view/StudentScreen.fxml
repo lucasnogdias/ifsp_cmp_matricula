@@ -38,11 +38,11 @@
                 <Color blue="0.000" green="0.220" red="0.420" fx:id="x2" />
               </textFill>
             </Label>
-            <Label id="usrLastName" fx:id="usrSobrenome" font="$x1" layoutX="21.0" text="LastNameGoesHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="76.0" />
+            <Label fx:id="usrSobrenome" font="$x1" layoutX="21.0" text="LastNameGoesHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="76.0" />
             <Label fx:id="usrCurso" font="$x1" layoutX="24.0" text="CourseGoesHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="121.0" />
             <Label fx:id="usrPeriodo" font="$x1" layoutX="24.0" text="PeriodGoesHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="166.0" />
             <Label fx:id="usrHoras" font="$x1" layoutX="24.0" text="HoursCompleteHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="211.0" />
-            <Label id="usr" fx:id="usrFaltaHoras" font="$x1" layoutX="24.0" text="HoursIncompleteHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="256.0" />
+            <Label fx:id="usrFaltaHoras" font="$x1" layoutX="24.0" text="HoursIncompleteHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="256.0" />
             <Label fx:id="usrMedia" font="$x1" layoutX="24.0" text="AvaregeGradesHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="301.0" />
           </children>
         </AnchorPane>
@@ -55,13 +55,13 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="175.0" prefWidth="417.0">
                       <children>
-                        <TableView prefHeight="199.9998779296875" prefWidth="199.9998779296875" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="avaliableTableView" prefHeight="199.9998779296875" prefWidth="199.9998779296875" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="85.0" text="Disciplina" />
-                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="69.0" text="Turma" />
-                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="87.0" text="Professor" />
-                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="89.0" text="Dia" />
-                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="90.0" text="Horário" />
+                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="85.0" text="Disciplina" fx:id="aDisciplina" />
+                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="69.0" text="Turma" fx:id="aTurma" />
+                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="87.0" text="Professor" fx:id="aProfessor" />
+                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="89.0" text="Dia" fx:id="aDia" />
+                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="90.0" text="Horário" fx:id="aHorario" />
                           </columns>
                         </TableView>
                       </children>
