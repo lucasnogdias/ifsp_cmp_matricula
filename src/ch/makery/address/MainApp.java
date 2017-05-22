@@ -22,7 +22,10 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Sistema de Matrícula");
+        this.primaryStage.setTitle("Sistema de Matricula");
+        
+        
+        
         if (MainApp.mainInst==null){
         	MainApp.mainInst = this;
         }else {
@@ -47,7 +50,13 @@ public class MainApp extends Application {
             // Mostra a scene (cena) contendo o root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+            
+            primaryStage.setResizable(false);
+            primaryStage.setWidth(520);
+            primaryStage.setHeight(200);
+            
             primaryStage.show();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,6 +86,11 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/StudentScreen.fxml"));
             AnchorPane student = (AnchorPane) loader.load();
+            
+            primaryStage.setResizable(false);
+            primaryStage.setWidth(800);
+            primaryStage.setHeight(500);
+            
 
             // Define o person overview dentro do root layout.
             rootLayout.setCenter(student);

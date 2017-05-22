@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import usr.Aluno;
 
 
@@ -24,10 +25,18 @@ public class Login {
     
     @FXML
     private Button log;
+    
+    @FXML
+    private Button logExit;
+    
+    @FXML
+    private AnchorPane anchorPaneLog;
 
     @FXML
     void initialize() {
-        assert userName != null : "fx:id=\"userName\" was not injected: check your FXML file 'LoginScreen.fxml'.";
+        
+    	
+    	assert userName != null : "fx:id=\"userName\" was not injected: check your FXML file 'LoginScreen.fxml'.";
         assert password != null : "fx:id=\"password\" was not injected: check your FXML file  'LoginScreen.fxml'.";
         
         log.setOnAction(e -> this.logIn());
@@ -39,12 +48,13 @@ public class Login {
     	
     	String user = userName.getText();
     	String pass = password.getText();
+    	
     	if (user.isEmpty() || user==null){
-    		//TODO: Show error message. Login não pode ser deixado vazio.
-    		System.out.println("Login não pode ser deixado vazio.");
+    		//TODO: Show error message. Login nï¿½o pode ser deixado vazio.
+    		System.out.println("Login nï¿½o pode ser deixado vazio.");
     	} else if (pass.isEmpty() || pass==null) {
-    		//TODO: Show error message. Passowrd não pode ser deixado vazio.
-    		System.out.println("Password não pode ser deixado vazio.");
+    		//TODO: Show error message. Passowrd nï¿½o pode ser deixado vazio.
+    		System.out.println("Password nï¿½o pode ser deixado vazio.");
     	} else {
     		//TODO: Call BD and check for user name and password. Recieve a response and log the user in.
     		System.out.println("Logado como "+user);
