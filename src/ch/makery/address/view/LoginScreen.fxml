@@ -12,20 +12,20 @@
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="164.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.Login">
   <!-- TODO Add Nodes -->
   <children>
-    <Button fx:id="log" layoutX="392.0" layoutY="116.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="Entrar" />
-    <TextField fx:id="userName" layoutX="254.0" layoutY="20.0" prefHeight="26.0" prefWidth="249.0" promptText="Insira seu Prontuário..." />
-    <TextField fx:id="password" layoutX="285.0" layoutY="69.0" prefHeight="26.0" prefWidth="222.0" promptText="Insira sua Senha..." visible="true" />
-    <Label layoutX="212.0" layoutY="25.0" text="Login" />
-    <Label layoutX="215.0" layoutY="74.0" text="Password" />
+    <Button fx:id="log" layoutX="392.0" layoutY="116.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="Entrar" AnchorPane.rightAnchor="15.0" />
+    <TextField fx:id="userName" layoutX="254.0" layoutY="20.0" prefHeight="26.0" prefWidth="249.0" promptText="Insira seu Prontuário..." AnchorPane.rightAnchor="15.0" />
+    <TextField fx:id="password" layoutX="285.0" layoutY="69.0" prefHeight="26.0" prefWidth="222.0" promptText="Insira sua Senha..." visible="true" AnchorPane.rightAnchor="15.0" />
+    <Label layoutX="212.0" layoutY="25.0" text="Login" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="274.0" />
+    <Label layoutX="215.0" layoutY="74.0" text="Password" AnchorPane.leftAnchor="212.0" />
     <Text fontSmoothingType="LCD" layoutX="252.0" layoutY="-88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema" textAlignment="CENTER" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="397.3876953125">
       <font>
         <Font size="22.0" />
       </font>
     </Text>
-      <Button fx:id="log1" layoutX="212.0" layoutY="116.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="Cancelar" />
-      <ImageView fitHeight="134.0" fitWidth="201.0" layoutX="3.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="log1" layoutX="212.0" layoutY="116.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="Cancelar" AnchorPane.leftAnchor="212.0" />
+      <ImageView fitHeight="134.0" fitWidth="201.0" layoutX="3.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="3.0">
          <image>
-            <Image url="@../../../../../../imagens/ifsp_.png" />
+            <Image url="@../../../../../imagens/ifsp_.png" />
          </image>
       </ImageView>
       <Text fontSmoothingType="LCD" layoutX="333.0" layoutY="-63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de" textAlignment="CENTER">
@@ -38,7 +38,7 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <Label layoutX="14.0" layoutY="133.0" text="Versao 1.0" />
-      <Label layoutX="16.0" layoutY="108.0" prefHeight="16.0" prefWidth="175.0" text="Esqueci a minha senha" />
+      <Label layoutX="14.0" layoutY="133.0" text="Versao 1.0" AnchorPane.leftAnchor="16.0" />
+      <Label layoutX="16.0" layoutY="108.0" prefHeight="16.0" prefWidth="175.0" text="Esqueci a minha senha" AnchorPane.leftAnchor="16.0" />
   </children>
 </AnchorPane>
