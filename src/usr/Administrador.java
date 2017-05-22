@@ -16,7 +16,7 @@ public class Administrador extends Usuario {
 		
 	}
 	
-	public void manterUsuário(){
+	public void manterUsuario(){
 		
 	}
 
