@@ -1,6 +1,7 @@
 package ch.makery.address;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -15,7 +16,7 @@ import usr.Aluno;
 
 
 public class StudentScreen {
-
+	 
     @FXML
     private ResourceBundle resources;
     
@@ -25,6 +26,8 @@ public class StudentScreen {
     @FXML
     private URL location;
     
+    
+    //Inicio das Variaveis de Controle do Usuário
     @FXML
     private Label logedUser;
     
@@ -48,33 +51,54 @@ public class StudentScreen {
 
     @FXML
     private Label usrSobrenome;
+    //Fim das variáveis de controle do usuário
 
     
     // Inicio das variáveis de controle da tabela de Disciplinas Disponiveis
     @FXML
-    private TableColumn<TableDiscipline, String> aDia;
+    private TableColumn<Disciplina, String> aDia;
 
     @FXML
-    private TableColumn<TableDiscipline, String> aDisciplina;
+    private TableColumn<Disciplina, String> aDisciplina;
 
     @FXML
-    private TableColumn<TableDiscipline, String> aHorario;
+    private TableColumn<Disciplina, String> aHorario;
 
     @FXML
-    private TableColumn<TableDiscipline, String> aProfessor;
+    private TableColumn<Disciplina, String> aProfessor;
 
     @FXML
-    private TableColumn<TableDiscipline, String> aTurma;
+    private TableColumn<Disciplina, String> aTurma;
 
     @FXML
-    private TableView<TableDiscipline> avaliableTableView;
+    private TableView<Disciplina> avaliableTableView;
     // Fim das variaveis de controle da tabela de Disciplinas Disponíveis
+    
+    // Inicio das variáveis de controle da tabela de Disciplinas Selecionadas
+    @FXML
+    private TableColumn<Disciplina, String> sDia;
 
-    // Popular dados da Tabela de Disciplinas Disponíveis
-    final ObservableList<TableDiscipline> data = FXCollections.observableArrayList(
-    		new TableDiscipline("LPIII", "A", "Segunda", "19-23", "Samuel"),
-    		new TableDiscipline("AOO", "A", "Terça", "19-23", "Samuel")
-    		);
+    @FXML
+    private TableColumn<Disciplina, String> sDisciplina;
+
+    @FXML
+    private TableColumn<Disciplina, String> sHorario;
+
+    @FXML
+    private TableColumn<Disciplina, String> sProfessor;
+
+    @FXML
+    private TableColumn<Disciplina, String> sTurma;
+
+    @FXML
+    private TableView<Disciplina> selectedTableView;   
+    // Fim das variavies de controle da tabela de Disciplinas Selecionadas
+
+    // Lista das disciplinas Disponíveis
+    private ObservableList<Disciplina> disciplinasDisponiveis;
+    
+    // Lista das disciplinas Selecionadas para Requerimento
+    private ObservableList<Disciplina> disciplinasRequiridas;
     
     @FXML
     void initialize() {
@@ -82,13 +106,31 @@ public class StudentScreen {
     	Aluno logdAluno = (Aluno) MainApp.mainInst.user;
     	logedUser.setText(logdAluno.getProntuario());
     	
+    	//Obter Disciplinas sendo ofertadas no periodo e disponíveis para o aluno
+    	this.disciplinasDisponiveis = this.ListarDisciplinas();
+    	
+    	
     	//Configurar tabela de Disciplinas Disponíveis
-    	aDisciplina.setCellValueFactory(new PropertyValueFactory<TableDiscipline, String>("disciplina"));
-    	aTurma.setCellValueFactory(new PropertyValueFactory<TableDiscipline, String>("turma"));
-    	aDia.setCellValueFactory(new PropertyValueFactory<TableDiscipline, String>("dia"));
-    	aHorario.setCellValueFactory(new PropertyValueFactory<TableDiscipline, String>("horario"));
-    	aProfessor.setCellValueFactory(new PropertyValueFactory<TableDiscipline, String>("professor"));
-    	avaliableTableView.setItems(data);
+    	aDisciplina.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("disciplina"));
+    	aTurma.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("turma"));
+    	aDia.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("dia"));
+    	aHorario.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("horario"));
+    	aProfessor.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("professor"));
+    	avaliableTableView.setItems(disciplinasDisponiveis);
+    }
+    
+    private ObservableList<Disciplina> ListarDisciplinas(){
+    	//TODO: Obter do BD uma lista de disciplinas sendo o ofertadas.
+    	//TODO: Comparar esta lista com o usuario e remover todas as disciplinas que ele não pode se matricular.
+    	ObservableList<Disciplina> disponiveis = FXCollections.observableArrayList(
+    			new Disciplina("AOO", "N", "Quarta-Feira", "19-23", "Rafael Muniz e Samuel Martins"),
+    			new Disciplina("BD2", "N", "Terça-Feira", "19-23", "Everton Silva e Carlos Beluzo"),
+    			new Disciplina("ED1", "N", "Sexta-Feira", "19-23", "José Américo e Samuel Martins"),
+    			new Disciplina("IHC", "N", "Quinta-Feira", "19-21", "José Américo"),
+    			new Disciplina("LP3", "N", "Segunda-Feira", "19-23", "Everton Silva e André Valente"),
+    			new Disciplina("MFI", "N", "Quarta-Feira", "21-23", "Cecília Pereira de Andrade")
+    	);
+    	return disponiveis;
     }
 
 }
