@@ -1,7 +1,6 @@
 package ch.makery.address;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -117,6 +116,17 @@ public class StudentScreen {
     	aHorario.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("horario"));
     	aProfessor.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("professor"));
     	avaliableTableView.setItems(disciplinasDisponiveis);
+    	
+    	//Tabela de disciplinas selecionadas
+    	this.disciplinasRequiridas = FXCollections.observableArrayList();
+    	
+    	//Configurar tabela de Disciplas Selecionadas
+    	sDisciplina.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("disciplina"));
+    	sTurma.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("turma"));
+    	sDia.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("dia"));
+    	sHorario.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("horario"));
+    	sProfessor.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("professor"));
+    	selectedTableView.setItems(this.disciplinasRequiridas);
     }
     
     private ObservableList<Disciplina> ListarDisciplinas(){
@@ -131,6 +141,22 @@ public class StudentScreen {
     			new Disciplina("MFI", "N", "Quarta-Feira", "21-23", "Cecília Pereira de Andrade")
     	);
     	return disponiveis;
+    }
+    
+    public void selecionarDisciplina(){
+    	Disciplina d = this.avaliableTableView.getSelectionModel().getSelectedItem();
+    	if (d!=null){
+    		this.disciplinasRequiridas.add(d);
+    		this.disciplinasDisponiveis.remove(d);
+    	}
+    }
+    
+    public void retirarDisciplina(){
+    	Disciplina d = this.selectedTableView.getSelectionModel().getSelectedItem();
+    	if(d!=null){
+    		this.disciplinasDisponiveis.add(d);
+    		this.disciplinasRequiridas.remove(d);
+    	}
     }
 
 }
