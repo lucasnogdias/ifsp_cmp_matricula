@@ -20,7 +20,7 @@
             <Image url="@../../../../../imagens/ifsp_.png" />
          </image>
       </ImageView>
-      <Button fx:id="logExit" layoutX="223.0" layoutY="125.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="Sair" />
+      <Button fx:id="logExit" layoutX="223.0" layoutY="125.0" mnemonicParsing="false" onAction="#exit" prefHeight="34.0" prefWidth="114.0" text="Sair" />
       <Label layoutX="14.0" layoutY="134.0" text="Versao 1.0" />
   </children>
 </AnchorPane>
