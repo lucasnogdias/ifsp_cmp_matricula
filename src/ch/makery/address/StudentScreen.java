@@ -141,15 +141,15 @@ public class StudentScreen {
     private ObservableList<Disciplina> BuscarOfertadas(){
     	//TODO: substituir essa funçao por uma busca ao banco com as disciplinas ofertadas
     	ObservableList<Disciplina> ofertas = FXCollections.observableArrayList(
-    			new Disciplina("AOO", "N", "Quarta-Feira", "19-23", "Rafael Muniz e Samuel Martins"),
-    			new Disciplina("BD2", "N", "Terça-Feira", "19-23", "Everton Silva e Carlos Beluzo"),
-    			new Disciplina("ED1", "N", "Sexta-Feira", "19-23", "José Américo e Samuel Martins"),
+    			new Disciplina("AOO", "N", "Quarta-Feira", "19-23", "Rafael Muniz e Samuel Martins", new String[]{"ESW"}),
+    			new Disciplina("BD2", "N", "Terça-Feira", "19-23", "Everton Silva e Carlos Beluzo", new String[]{"BD1"}),
+    			new Disciplina("ED1", "N", "Sexta-Feira", "19-23", "José Américo e Samuel Martins", new String[]{"LP2", "BD1"}),
     			new Disciplina("IHC", "N", "Quinta-Feira", "19-21", "José Américo"),
-    			new Disciplina("LP3", "N", "Segunda-Feira", "19-23", "Everton Silva e André Valente"),
+    			new Disciplina("LP3", "N", "Segunda-Feira", "19-23", "Everton Silva e André Valente", new String[]{"LP2"}),
     			new Disciplina("MFI", "N", "Quarta-Feira", "21-23", "Cecília Pereira de Andrade"),
     			new Disciplina("LP1", "N", "Segunda-Feira", "19-23", "Sovat"),
     			new Disciplina("BD1", "N", "Terça-Feira", "19-23", "Zady e Beluzo"),
-    			new Disciplina("WEB", "N", "Quinta-Feira", "19-23", "Rafael"),
+    			new Disciplina("WEB", "N", "Quinta-Feira", "19-23", "Rafael", new String[]{"LP1"}),
     			new Disciplina("TST", "N", "Quinta-Feira", "21-23", "José")
     	);
     	return ofertas;

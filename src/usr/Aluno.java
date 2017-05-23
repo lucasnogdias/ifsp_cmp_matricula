@@ -1,13 +1,24 @@
 package usr;
+
+import java.util.ArrayList;
+
+import ch.makery.address.Disciplina;
+
 /**
  * Classe Aluno. Extende a Classe Usuario, Aluno é um tipo especifico de usuário.
  * 
  */
 public class Aluno extends Usuario {
 	private String prontuario;
+	private String[] disciplinasCod;
 	
 	public Aluno(String prnt){
-		this.setProntuario(prnt);
+		this.prontuario = prnt;
+	}
+	
+	public Aluno(String prnt, String[] disc){
+		this.prontuario = prnt;
+		this.disciplinasCod = disc;
 	}
 	
 	public void solicitarMatricula(){
@@ -18,10 +29,9 @@ public class Aluno extends Usuario {
 		//TODO
 	}
 	
-	public boolean consultarMatricula(){
-		//TODO
+	public String[] consultarMatricula(){
 		
-		return true;
+		return this.disciplinasCod;
 	}
 	
 	@Override

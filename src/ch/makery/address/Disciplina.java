@@ -6,6 +6,7 @@ public class Disciplina {
 	private final String dia;
 	private final String horario;
 	private final String professor;
+	private String[] preReqs;
 	
 	public Disciplina (String dis, String tur, String d, String h, String prof){
 		this.disciplina = dis;
@@ -13,6 +14,16 @@ public class Disciplina {
 		this.dia = d;
 		this.horario = h;
 		this.professor = prof;
+		this.preReqs = null;
+	}
+	
+	public Disciplina (String dis, String tur, String d, String h, String prof, String[] pre){
+		this.disciplina = dis;
+		this.turma = tur;
+		this.dia = d;
+		this.horario = h;
+		this.professor = prof;
+		this.preReqs = pre;
 	}
 
 	public String getDisciplina() {
