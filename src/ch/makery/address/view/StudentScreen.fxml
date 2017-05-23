@@ -72,7 +72,7 @@
                 </TableView>
                 <Button layoutX="462.0" layoutY="106.0" mnemonicParsing="false" onAction="#selecionarDisciplina" prefHeight="41.0" text="Requisitar Disciplina" />
                 <Button layoutX="465.0" layoutY="307.0" mnemonicParsing="false" onAction="#retirarDisciplina" prefHeight="41.0" prefWidth="127.0" text="Remover Disciplina" />
-                <Button layoutX="465.0" layoutY="386.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="127.0" text="Enviar Requisição" />
+                <Button layoutX="465.0" layoutY="386.0" mnemonicParsing="false" onAction="#enviarRequisicao" prefHeight="31.0" prefWidth="127.0" text="Enviar Requisição" />
               </children>
             </AnchorPane>
           </children>
