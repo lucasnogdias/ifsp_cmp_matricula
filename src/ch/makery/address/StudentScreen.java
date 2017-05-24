@@ -1,6 +1,7 @@
 package ch.makery.address;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -133,7 +134,7 @@ public class StudentScreen {
     	//TODO: Obter do BD uma lista de disciplinas sendo o ofertadas.
     	ObservableList<Disciplina> ofertadas = this.BuscarOfertadas();
     	//TODO: Comparar esta lista com o usuario e remover todas as disciplinas que ele não pode se matricular.
-    	ObservableList<Disciplina> disponiveis = ofertadas;
+    	ObservableList<Disciplina> disponiveis;
     	disponiveis = this.filtrarDisciplinas(ofertadas);
     	return disponiveis;
     }
@@ -156,7 +157,37 @@ public class StudentScreen {
     }
     
     private ObservableList<Disciplina> filtrarDisciplinas(ObservableList<Disciplina> oferta){
-    	return oferta;
+    	Aluno lgd = (Aluno) MainApp.mainInst.user;
+    	String[] usrDisc = lgd.consultarMatricula();
+    	ObservableList<Disciplina> fn = FXCollections.observableArrayList();
+    	for (int i = 0; i<oferta.size(); i++){
+    		Disciplina d = oferta.get(i);
+    		if(!Arrays.asList(usrDisc).contains(d.getDisciplina())){
+    			String[] preReqs = d.getPreReqs();
+    			boolean meets = true;
+    			if (preReqs!=null){
+    				for (int j = 0; j<preReqs.length; j++){
+    					if ( !Arrays.asList(usrDisc).contains(preReqs[j]) ){
+    						meets = false;
+    						System.out.println("Aluno não possui o pre-requisito "+preReqs[j]+" para a disciplina "+d.getDisciplina());
+    					}
+    				}
+    				if (meets){
+    					fn.add(d);
+    				}
+    			}else {
+    				//Disciplina sem pre-requisitos, adicionar a lista final.
+    				fn.add(d);
+    			}
+    		}else{
+    			System.out.println("Aluno já cursou Disciplina "+d.getDisciplina()+" não adicionar na lista final");
+    		}
+    	}
+    	System.out.println("Disciplinas Disponíveis: ");
+    	for (int k = 0; k<fn.size(); k++){
+    		System.out.println(fn.get(k).getDisciplina());
+    	}
+    	return fn;
     }
     
     public void selecionarDisciplina(){

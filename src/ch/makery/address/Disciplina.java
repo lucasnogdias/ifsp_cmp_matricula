@@ -45,4 +45,8 @@ public class Disciplina {
 	public String getProfessor() {
 		return this.professor;
 	}
+	
+	public String[] getPreReqs(){
+		return this.preReqs;
+	}
 }
