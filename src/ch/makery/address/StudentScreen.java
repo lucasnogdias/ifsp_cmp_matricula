@@ -40,8 +40,8 @@ public class StudentScreen {
     @FXML
     private Label usrHoras;
 
-    @FXML
-    private Label usrMedia;
+    //@FXML
+    //private Label usrMedia;
 
     @FXML
     private Label usrNome;
@@ -104,7 +104,15 @@ public class StudentScreen {
     void initialize() {
     	assert logedUser != null : "fx:id=\"logedUser\" was not injected: check your FXML file 'StudentScreen.fxml'.";
     	Aluno logdAluno = (Aluno) MainApp.mainInst.user;
+    	Curso curso = MainApp.mainInst.curso;
     	logedUser.setText(logdAluno.getProntuario());
+    	this.usrNome.setText(logdAluno.getNomeUsuario().split(" ")[0]);
+    	this.usrCurso.setText(logdAluno.getCurso());
+    	this.usrPeriodo.setText(logdAluno.getPeriodo());
+    	this.usrHoras.setText(Integer.toString(logdAluno.getCargaHoraria())+" Horas");
+    	this.usrSobrenome.setText(this.getLastName(logdAluno.getNomeUsuario()));
+    	//TODO: Calcular horas faltantes a partir do total de horas do curso e quantas horas foram cumpridas.
+    	this.usrFaltaHoras.setText(Integer.toString(curso.getTotalHoras()-logdAluno.getCargaHoraria())+" Horas");
     	
     	//Obter Disciplinas sendo ofertadas no periodo e disponíveis para o aluno
     	this.disciplinasDisponiveis = this.ListarDisciplinas();
@@ -130,7 +138,19 @@ public class StudentScreen {
     	selectedTableView.setItems(this.disciplinasRequiridas);
     }
     
-    private ObservableList<Disciplina> ListarDisciplinas(){
+    private String getLastName(String nomeUsuario) {
+		String lastName = "";
+		String[] allNames = nomeUsuario.split(" ");
+		for (int i = 1; i<allNames.length; i++){
+			lastName+=allNames[i];
+			if (i+1<allNames.length){
+				lastName+=" ";
+			}
+		}
+		return lastName;
+	}
+
+	private ObservableList<Disciplina> ListarDisciplinas(){
     	//TODO: Obter do BD uma lista de disciplinas sendo o ofertadas.
     	ObservableList<Disciplina> ofertadas = this.BuscarOfertadas();
     	//TODO: Comparar esta lista com o usuario e remover todas as disciplinas que ele não pode se matricular.

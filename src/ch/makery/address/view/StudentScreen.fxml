@@ -26,11 +26,11 @@
             <Label layoutX="14.0" text="Nome" AnchorPane.topAnchor="15.0" />
             <Label layoutX="14.0" text="Sobrenome" AnchorPane.topAnchor="60.0" />
             <Label layoutX="14.0" text="Curso" AnchorPane.topAnchor="105.0" />
-            <Label layoutX="14.0" text="Periodo" AnchorPane.topAnchor="150.0" />
+            <Label layoutX="14.0" text="Periodo de Ingresso" AnchorPane.topAnchor="150.0" />
             <Label layoutX="14.0" text="Carga Horária Cumprida" AnchorPane.topAnchor="195.0" />
             <Label layoutX="14.0" text="Carga Horária a Cumprir" AnchorPane.topAnchor="240.0" />
-            <Label layoutX="14.0" layoutY="285.0" text="Média Geral" />
-            <Label id="usrName" fx:id="usrNome" layoutX="20.0" layoutY="31.0" text="NameGoesHere" textAlignment="CENTER">
+            <Label layoutX="13.0" layoutY="285.0" text="Média Geral" visible="false" />
+            <Label id="usrMedia" layoutX="24.0" text="AvaregeGradesHere" textAlignment="CENTER" visible="false" AnchorPane.topAnchor="301.0">
               <font>
                 <Font size="16.0" fx:id="x1" />
               </font>
@@ -38,12 +38,12 @@
                 <Color blue="0.000" green="0.220" red="0.420" fx:id="x2" />
               </textFill>
             </Label>
+            <Label id="usrName" fx:id="usrNome" font="$x1" layoutX="20.0" layoutY="31.0" text="NameGoesHere" textAlignment="CENTER" textFill="$x2" />
             <Label fx:id="usrSobrenome" font="$x1" layoutX="21.0" text="LastNameGoesHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="76.0" />
             <Label fx:id="usrCurso" font="$x1" layoutX="24.0" text="CourseGoesHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="121.0" />
             <Label fx:id="usrPeriodo" font="$x1" layoutX="24.0" text="PeriodGoesHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="166.0" />
             <Label fx:id="usrHoras" font="$x1" layoutX="24.0" text="HoursCompleteHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="211.0" />
             <Label fx:id="usrFaltaHoras" font="$x1" layoutX="24.0" text="HoursIncompleteHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="256.0" />
-            <Label fx:id="usrMedia" font="$x1" layoutX="24.0" text="AvaregeGradesHere" textAlignment="CENTER" textFill="$x2" AnchorPane.topAnchor="301.0" />
           </children>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" visible="true">
