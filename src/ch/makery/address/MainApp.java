@@ -16,6 +16,7 @@ public class MainApp extends Application {
     private BorderPane rootLayout;
     
     public Usuario user = null;
+    public Curso curso = null;
     
     public static MainApp mainInst = null;
 

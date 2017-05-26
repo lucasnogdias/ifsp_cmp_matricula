@@ -3,7 +3,7 @@ package usr;
 import java.util.Date;
 
 /**
- * Classe Usuario. Esta é uma classe abstrata, as classes filhas devem implementar suas funções!
+ * Classe Usuario. Esta e uma classe abstrata, as classes filhas devem implementar suas funï¿½ï¿½es!
  *
  */
 public abstract class Usuario {
@@ -13,6 +13,8 @@ public abstract class Usuario {
 	String email;
 	int tipo;
 	Date dataNasc;
+	int tipoUsuario;
+	String nomeTipoUsuario;
 	
 	public abstract void consultarDisciplinas();
 	public abstract void consultarTurmas();

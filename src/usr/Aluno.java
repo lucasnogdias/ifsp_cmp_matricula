@@ -1,13 +1,28 @@
 package usr;
+
+
 /**
  * Classe Aluno. Extende a Classe Usuario, Aluno é um tipo especifico de usuário.
  * 
  */
 public class Aluno extends Usuario {
-	private String prontuario;
+	private final String prontuario;
+	private String[] disciplinasCod;
+	private String curso;
+	private String periodo;
+	private int cargaHoraria;
 	
 	public Aluno(String prnt){
-		this.setProntuario(prnt);
+		this.prontuario = prnt;
+	}
+	
+	public Aluno(String prnt, String nome, String cur, String per, int ch ,String[] disc){
+		this.prontuario = prnt;
+		this.nomeUsuario = nome;
+		this.curso = cur;
+		this.periodo = per;
+		this.cargaHoraria = ch;
+		this.disciplinasCod = disc;
 	}
 	
 	public void solicitarMatricula(){
@@ -18,10 +33,9 @@ public class Aluno extends Usuario {
 		//TODO
 	}
 	
-	public boolean consultarMatricula(){
-		//TODO
+	public String[] consultarMatricula(){
 		
-		return true;
+		return this.disciplinasCod;
 	}
 	
 	@Override
@@ -40,8 +54,33 @@ public class Aluno extends Usuario {
 		return prontuario;
 	}
 
-	public void setProntuario(String prontuario) {
-		this.prontuario = prontuario;
+
+	public String getCurso() {
+		return curso;
+	}
+
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+
+	public String getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
+	}
+
+	public int getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+	public void setCargaHoraria(int cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
+	
+	public String getNomeUsuario(){
+		return this.nomeUsuario;
 	}
 
 }
