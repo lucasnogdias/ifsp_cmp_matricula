@@ -88,9 +88,9 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/StudentScreen.fxml"));
             AnchorPane student = (AnchorPane) loader.load();
             
-            primaryStage.setResizable(false);
-            primaryStage.setWidth(800);
-            primaryStage.setHeight(500);
+            primaryStage.setResizable(true);
+            primaryStage.setWidth(815);
+            primaryStage.setHeight(540);
             
 
             // Define o person overview dentro do root layout.
