@@ -79,12 +79,17 @@ public class Login {
     		System.out.println("Password nï¿½o pode ser deixado vazio.");
     	} else {
     		//TODO: Call BD and check for user name and password. Recieve a response and log the user in.
-    		System.out.println("Logado como "+user);
-    		MainApp.mainInst.user = new Aluno(user, "Lucas Nogueira Dias","ADS", "1s2016", 80, new String[]{"LP1", "BD1"});
-    		//TODO: Olhar no Banco por dados do curso do Aluno que logou:
-    		MainApp.mainInst.curso = new Curso("ADS", "Análise e Desenvolvimento de Sistemas", "01/02/2010", new String[]{"APO", "AOO", "ARQ", "RAS", "BD1", "BD2", "CEE", "DWE", "ESW", "ED1", "GPR", "HCT", "ING", "IGT", "IHC"}, 360);
-    		//TODO: IF Response for bd is true, load next screen.
-    		MainApp.mainInst.loadStudentScreen();
+    		if (user.equals("admin")){
+    			System.out.println("Logado como admin");
+    			MainApp.mainInst.loadAdminScreen();
+    		}else{
+    			System.out.println("Logado como Aluno "+user);
+    			MainApp.mainInst.user = new Aluno(user, "Lucas Nogueira Dias","ADS", "1s2016", 80, new String[]{"LP1", "BD1"});
+    			//TODO: Olhar no Banco por dados do curso do Aluno que logou:
+    			MainApp.mainInst.curso = new Curso("ADS", "Análise e Desenvolvimento de Sistemas", "01/02/2010", new String[]{"APO", "AOO", "ARQ", "RAS", "BD1", "BD2", "CEE", "DWE", "ESW", "ED1", "GPR", "HCT", "ING", "IGT", "IHC"}, 360);
+    			//TODO: IF Response for bd is true, load next screen.
+    			MainApp.mainInst.loadStudentScreen();
+    		}
     	}
     }
     
