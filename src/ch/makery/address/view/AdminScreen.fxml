@@ -22,9 +22,9 @@
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
           <children>
-            <TableView prefHeight="436.0" prefWidth="203.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="listTableView" prefHeight="436.0" prefWidth="203.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="202.0" text="Requisições" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="202.0" text="Requisições" fx:id="listReq" />
               </columns>
             </TableView>
           </children>
@@ -39,24 +39,24 @@
             <Label font="$x1" layoutX="14.0" layoutY="45.0" text="Curso" />
             <Label font="$x1" layoutX="321.0" layoutY="45.0" text="Periodo" />
             <Label font="$x1" layoutX="321.0" layoutY="18.0" text="Prontuario" />
-            <Label layoutX="68.0" layoutY="17.0" maxWidth="250.0" prefWidth="-1.0" text="Nome do Aluno" />
-            <Label layoutX="68.0" layoutY="48.0" text="ADS" />
-            <Label layoutX="411.0" layoutY="21.0" text="160000-0" />
-            <Label layoutX="392.0" layoutY="48.0" text="1s2016" />
+            <Label fx:id="reqAluno" layoutX="68.0" layoutY="17.0" maxWidth="250.0" prefWidth="-1.0" text="Nome do Aluno" />
+            <Label fx:id="reqCurso" layoutX="68.0" layoutY="48.0" text="ADS" />
+            <Label fx:id="reqPront" layoutX="411.0" layoutY="21.0" text="160000-0" />
+            <Label fx:id="reqPeriodo" layoutX="392.0" layoutY="48.0" text="1s2016" />
             <Label font="$x1" layoutX="14.0" layoutY="89.0" text="Disciplinas Requisitadas" />
-            <TableView id="avaliableTableView" layoutX="14.0" layoutY="116.0" prefHeight="175.0" prefWidth="418.0">
+            <TableView id="avaliableTableView" fx:id="reqTableView" layoutX="14.0" layoutY="116.0" prefHeight="175.0" prefWidth="418.0">
               <columns>
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="62.0" text="Disciplina" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="43.0" text="Turma" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="173.0" text="Professor" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="89.0" text="Dia" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="49.0" text="Horário" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="62.0" text="Disciplina" fx:id="reqDisc" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="43.0" text="Turma" fx:id="reqTurma" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="173.0" text="Professor" fx:id="reqProf" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="89.0" text="Dia" fx:id="reqDia" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="49.0" text="Horário" fx:id="reqHorario" />
               </columns>
             </TableView>
             <Label font="$x1" layoutX="14.0" layoutY="302.0" text="Justificativa" />
-            <TextField layoutX="14.0" layoutY="330.0" prefHeight="78.0" prefWidth="418.0" />
-            <Button layoutX="448.0" layoutY="183.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="123.0" text="Aprovar Requisição" />
-            <Button layoutX="446.0" layoutY="349.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="123.0" text="Recusar Requisição" />
+            <TextField fx:id="reqJustificativa" layoutX="14.0" layoutY="330.0" prefHeight="78.0" prefWidth="418.0" />
+            <Button layoutX="448.0" layoutY="183.0" mnemonicParsing="false" onAction="#aprovarReq" prefHeight="41.0" prefWidth="123.0" text="Aprovar Requisição" />
+            <Button layoutX="446.0" layoutY="349.0" mnemonicParsing="false" onAction="#recusarReq" prefHeight="41.0" prefWidth="123.0" text="Recusar Requisição" />
           </children>
         </AnchorPane>
       </items>
