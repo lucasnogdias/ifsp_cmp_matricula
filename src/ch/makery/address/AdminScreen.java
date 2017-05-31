@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import usr.Aluno;
 
 
 public class AdminScreen {
@@ -90,6 +91,18 @@ public class AdminScreen {
         
         listReq.setCellValueFactory(new PropertyValueFactory<Requisicao, String>("alunoProntuario"));
     	listTableView.setItems(reqList);
+    	
+    	listTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+    	    if (newSelection != null) {
+    	    	Requisicao sel = this.listTableView.getSelectionModel().getSelectedItem();
+    	    	//TODO: Requisitar no BD os dados do aluno do prontuario sel.getAlunoProntuario()) e criar um novo Aluno com os dados obtidos.
+    	    	Aluno aluno = new Aluno(sel.getAlunoProntuario(), "AlunoTeste", "ADS", "1s2016", 10, null);
+    	    	reqPront.setText(aluno.getProntuario());
+    	    	reqAluno.setText(aluno.getNomeUsuario());
+    	    	reqCurso.setText(aluno.getCurso());
+    	    	reqPeriodo.setText(aluno.getPeriodo());
+    	    }
+    	});
     }
     
     private ObservableList<Requisicao> BuscarRequicoes(){
