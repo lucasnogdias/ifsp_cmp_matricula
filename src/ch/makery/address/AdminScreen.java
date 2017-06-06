@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import usr.Aluno;
 
 
@@ -61,6 +62,28 @@ public class AdminScreen {
 
     @FXML
     private TableColumn<?, ?> reqTurma;
+    
+/** Variaveis de controle para formulário de cadastro de novo Aluno **/
+    @FXML
+    private Pane newStudentPane;
+    
+    @FXML
+    private TextField newCurso;
+
+    @FXML
+    private TextField newDisciplinas;
+
+    @FXML
+    private TextField newEmail;
+
+    @FXML
+    private TextField newName;
+
+    @FXML
+    private TextField newPeriodo;
+
+    @FXML
+    private TextField newRA;
 
 
     @FXML
@@ -69,6 +92,22 @@ public class AdminScreen {
 
     @FXML
     void recusarReq(ActionEvent event) {
+    }
+    
+    @FXML 
+    void newCadastro(ActionEvent event){
+    	closeCadastro(new ActionEvent());
+    }
+    
+    @FXML 
+    void closeCadastro(ActionEvent event){
+    	this.newStudentPane.setVisible(false);
+    	System.out.println("closeCadastro seu lixo");
+    }
+    
+    @FXML
+    void openCadastro(ActionEvent event){
+    	this.newStudentPane.setVisible(true);
     }
 
     @FXML
