@@ -37,13 +37,13 @@ public class AdminScreen {
     private Label reqCurso;
 
     @FXML
-    private TableColumn<?, ?> reqDia;
+    private TableColumn<Disciplina, String> reqDia;
 
     @FXML
-    private TableColumn<?, ?> reqDisc;
+    private TableColumn<Disciplina, String> reqDisc;
 
     @FXML
-    private TableColumn<?, ?> reqHorario;
+    private TableColumn<Disciplina, String> reqHorario;
 
     @FXML
     private TextField reqJustificativa;
@@ -52,16 +52,16 @@ public class AdminScreen {
     private Label reqPeriodo;
 
     @FXML
-    private TableColumn<?, ?> reqProf;
+    private TableColumn<Disciplina, String> reqProf;
 
     @FXML
     private Label reqPront;
 
     @FXML
-    private TableView<?> reqTableView;
+    private TableView<Disciplina> reqTableView;
 
     @FXML
-    private TableColumn<?, ?> reqTurma;
+    private TableColumn<Disciplina, String> reqTurma;
     
 /** Variaveis de controle para formulário de cadastro de novo Aluno **/
     @FXML
@@ -96,6 +96,26 @@ public class AdminScreen {
     
     @FXML 
     void newCadastro(ActionEvent event){
+    	String name = this.newName.getText();
+    	String prontuario = this.newRA.getText();
+    	String curso = this.newCurso.getText();
+    	String periodo = this.newPeriodo.getText();
+    	String email = this.newEmail.getText();
+    	String discp = this.newDisciplinas.getText();
+    	boolean error = false;
+    	if(name == "" || name == null){
+    		error = true;
+    	}
+    	if (prontuario == "" || prontuario == null){
+    		error = true;
+    	}
+    	if (curso == "" || curso == null){
+    		error = true;
+    	}
+    	if (periodo == "" || periodo == null){
+    		error = true;
+    	}
+    	//TODO: send this info as an Insert in database
     	closeCadastro(new ActionEvent());
     }
     
@@ -131,6 +151,13 @@ public class AdminScreen {
         listReq.setCellValueFactory(new PropertyValueFactory<Requisicao, String>("alunoProntuario"));
     	listTableView.setItems(reqList);
     	
+    	reqDisc.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("disciplina"));
+    	reqTurma.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("turma"));
+    	reqDia.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("dia"));
+    	reqHorario.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("horario"));
+    	reqProf.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("professor"));
+    	
+    	
     	listTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
     	    if (newSelection != null) {
     	    	Requisicao sel = this.listTableView.getSelectionModel().getSelectedItem();
@@ -140,6 +167,7 @@ public class AdminScreen {
     	    	reqAluno.setText(aluno.getNomeUsuario());
     	    	reqCurso.setText(aluno.getCurso());
     	    	reqPeriodo.setText(aluno.getPeriodo());
+    	    	reqTableView.setItems(sel.getDisciplinasRequeridas());
     	    }
     	});
     }
