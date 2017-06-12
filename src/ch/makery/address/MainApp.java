@@ -64,7 +64,7 @@ public class MainApp extends Application {
     }
 
     /**
-     * Mostra o person overview dentro do root layout.
+     * Abre a tela de login dentro do root layout.
      */
     public void showPersonOverview() {
         try {
@@ -80,20 +80,37 @@ public class MainApp extends Application {
         }
     }
     
+    public void loadAdminScreen(){
+    	try{
+    		FXMLLoader loader = new FXMLLoader();
+    		loader.setLocation(MainApp.class.getResource("view/AdminScreen.fxml"));
+            AnchorPane admin = (AnchorPane) loader.load();
+            
+            primaryStage.setResizable(false);
+            primaryStage.setWidth(805);
+            primaryStage.setHeight(520);
+            
+
+            // Define a Admin Screen dentro do root layout.
+            rootLayout.setCenter(admin);
+    	} catch (IOException e) {
+            e.printStackTrace();
+    	}
+    }
+    
     public void loadStudentScreen() {
-    	//TODO: load the Studentscreen over the login one;
     	try {
             // Carrega a tela de login;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/StudentScreen.fxml"));
             AnchorPane student = (AnchorPane) loader.load();
             
-            primaryStage.setResizable(true);
-            primaryStage.setWidth(815);
-            primaryStage.setHeight(540);
+            primaryStage.setResizable(false);
+            primaryStage.setWidth(805);
+            primaryStage.setHeight(530);
             
 
-            // Define o person overview dentro do root layout.
+            // Define a Student Screen do root layout.
             rootLayout.setCenter(student);
         } catch (IOException e) {
             e.printStackTrace();
