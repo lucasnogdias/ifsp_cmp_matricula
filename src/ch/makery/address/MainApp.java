@@ -2,6 +2,7 @@ package ch.makery.address;
 
 import java.io.IOException;
 
+import ch.makery.address.model.SqlConnector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,7 +26,7 @@ public class MainApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Sistema de Matricula");
         
-        
+        SqlConnector conect = new SqlConnector("addr");
         
         if (MainApp.mainInst==null){
         	MainApp.mainInst = this;
