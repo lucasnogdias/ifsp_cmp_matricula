@@ -3,6 +3,7 @@ package ch.makery.address;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ch.makery.address.model.SqlConnector;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -73,22 +74,25 @@ public class Login {
     	
     	if (user.isEmpty() || user==null){
     		//TODO: Show error message. Login nÃ£o pode ser deixado vazio.
-    		System.out.println("Login nï¿½o pode ser deixado vazio.");
+    		System.out.println("Login não pode ser deixado vazio.");
     	} else if (pass.isEmpty() || pass==null) {
     		//TODO: Show error message. Passowrd nï¿½o pode ser deixado vazio.
-    		System.out.println("Password nï¿½o pode ser deixado vazio.");
+    		System.out.println("Password não pode ser deixado vazio.");
     	} else {
-    		//TODO: Call BD and check for user name and password. Recieve a response and log the user in.
-    		if (user.equals("admin")){
+    		int usrType = SqlConnector.logUser(user);
+    		if (usrType==1){
     			System.out.println("Logado como admin");
     			MainApp.mainInst.loadAdminScreen();
-    		}else{
+    		}else if (usrType==5 || usrType==6){
     			System.out.println("Logado como Aluno "+user);
-    			MainApp.mainInst.user = new Aluno(user, "Lucas Nogueira Dias","ADS", "1s2016", 80, new String[]{"LP1", "BD1"});
+    			Aluno al = SqlConnector.getAlunoData(user);
+    			MainApp.mainInst.user = al;
     			//TODO: Olhar no Banco por dados do curso do Aluno que logou:
     			MainApp.mainInst.curso = new Curso("ADS", "Análise e Desenvolvimento de Sistemas", "01/02/2010", new String[]{"APO", "AOO", "ARQ", "RAS", "BD1", "BD2", "CEE", "DWE", "ESW", "ED1", "GPR", "HCT", "ING", "IGT", "IHC"}, 360);
     			//TODO: IF Response for bd is true, load next screen.
     			MainApp.mainInst.loadStudentScreen();
+    		}else {
+    			System.out.println("Usuario não Encontrado!");
     		}
     	}
     }

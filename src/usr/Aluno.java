@@ -10,19 +10,23 @@ public class Aluno extends Usuario {
 	private String[] disciplinasCod;
 	private String curso;
 	private String periodo;
-	private int cargaHoraria;
+	private int cod;
 	
 	public Aluno(String prnt){
 		this.prontuario = prnt;
 	}
 	
-	public Aluno(String prnt, String nome, String cur, String per, int ch ,String[] disc){
+	public Aluno(String prnt, String nome, String cur, String per, String[] disc, int cod){
 		this.prontuario = prnt;
 		this.nomeUsuario = nome;
 		this.curso = cur;
 		this.periodo = per;
-		this.cargaHoraria = ch;
 		this.disciplinasCod = disc;
+		this.cod = cod;
+	}
+
+	public int getCod(){
+		return this.cod;
 	}
 	
 	public void solicitarMatricula(){
@@ -40,7 +44,8 @@ public class Aluno extends Usuario {
 	
 	@Override
 	public void consultarDisciplinas() {
-		// TODO Auto-generated method stub
+		for(String s : this.disciplinasCod)
+		    System.out.println(s);
 
 	}
 
@@ -71,13 +76,6 @@ public class Aluno extends Usuario {
 		this.periodo = periodo;
 	}
 
-	public int getCargaHoraria() {
-		return cargaHoraria;
-	}
-
-	public void setCargaHoraria(int cargaHoraria) {
-		this.cargaHoraria = cargaHoraria;
-	}
 	
 	public String getNomeUsuario(){
 		return this.nomeUsuario;

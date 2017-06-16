@@ -36,6 +36,6 @@
     <Text font="$x1" fontSmoothingType="LCD" layoutX="333.0" layoutY="-63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de" textAlignment="CENTER" />
     <Text font="$x1" fontSmoothingType="LCD" layoutX="347.0" layoutY="-37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricula" textAlignment="CENTER" />
     <Label layoutY="133.0" text="Versao 1.0" AnchorPane.leftAnchor="16.0" />
-    <Label layoutY="108.0" prefHeight="16.0" prefWidth="175.0" text="Esqueci a minha senha" AnchorPane.leftAnchor="16.0" />
+    <Label layoutY="108.0" prefHeight="16.0" prefWidth="175.0" text="Esqueci a minha senha" visible="false" AnchorPane.leftAnchor="16.0" />
   </children>
 </AnchorPane>

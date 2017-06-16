@@ -26,7 +26,7 @@ public class MainApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Sistema de Matricula");
         
-        SqlConnector conect = new SqlConnector("addr");
+        SqlConnector.Connect();
         
         if (MainApp.mainInst==null){
         	MainApp.mainInst = this;

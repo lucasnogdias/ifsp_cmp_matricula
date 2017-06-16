@@ -174,7 +174,7 @@ public class AdminScreen {
     	    if (newSelection != null) {
     	    	Requisicao sel = this.listTableView.getSelectionModel().getSelectedItem();
     	    	//TODO: Requisitar no BD os dados do aluno do prontuario sel.getAlunoProntuario()) e criar um novo Aluno com os dados obtidos.
-    	    	Aluno aluno = new Aluno(sel.getAlunoProntuario(), "AlunoTeste", "ADS", "1s2016", 10, null);
+    	    	Aluno aluno = new Aluno(sel.getAlunoProntuario(), "AlunoTeste", "ADS", "1s2016", null, 3);
     	    	reqPront.setText(aluno.getProntuario());
     	    	reqAluno.setText(aluno.getNomeUsuario());
     	    	reqCurso.setText(aluno.getCurso());
