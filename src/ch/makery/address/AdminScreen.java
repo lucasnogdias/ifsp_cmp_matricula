@@ -1,8 +1,10 @@
 package ch.makery.address;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
+import ch.makery.address.model.SqlConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -88,19 +90,26 @@ public class AdminScreen {
 
     @FXML
     void aprovarReq(ActionEvent event) {
-    	//TODO: send data to backend
     	Disciplina aprovada = this.reqTableView.getSelectionModel().getSelectedItem();
     	ObservableList<Disciplina> list = this.reqTableView.getItems();
+    	int index = this.listTableView.getSelectionModel().getSelectedItem().getDisciplinasRequeridas().indexOf(aprovada);
+    	int reqCode = this.listTableView.getSelectionModel().getSelectedItem().getCodReqs().get(index);
+    	SqlConnector.aprovar(reqCode);
     	list.remove(aprovada);
     	this.reqTableView.setItems(list);
+    	this.listTableView.getSelectionModel().getSelectedItem().getCodReqs().remove(index);
     }
 
     @FXML
     void recusarReq(ActionEvent event) {
-    	//TODO: send data to backend
-    	Disciplina reprovada = this.reqTableView.getSelectionModel().getSelectedItem();
+    	Disciplina aprovada = this.reqTableView.getSelectionModel().getSelectedItem();
     	ObservableList<Disciplina> list = this.reqTableView.getItems();
-    	list.remove(reprovada);
+    	int index = this.listTableView.getSelectionModel().getSelectedItem().getDisciplinasRequeridas().indexOf(aprovada);
+    	int reqCode = this.listTableView.getSelectionModel().getSelectedItem().getCodReqs().get(index);
+    	SqlConnector.recusar(reqCode);
+    	list.remove(aprovada);
+    	this.reqTableView.setItems(list);
+    	this.listTableView.getSelectionModel().getSelectedItem().getCodReqs().remove(index);
     	String motivo = this.reqJustificativa.getText();
     	this.reqTableView.setItems(list);
     	this.reqJustificativa.setText("");
@@ -127,14 +136,26 @@ public class AdminScreen {
     	if (periodo == "" || periodo == null){
     		error = true;
     	}
-    	//TODO: send this info as an Insert in database
+    	if(!error){
+    		int curCode = -1;
+    		curso = curso.toLowerCase();
+    		if (curso.equals("ads") || curso.equals("tads") || curso.equals("analise e desenvolvimento de sistemas") || curso.equals("1")){
+    			curCode = 1;
+    		}
+    		Date dt = new Date(0);
+    		Boolean cadastrado = SqlConnector.cadastraAluno(prontuario, name, "ifsp", dt, 0, email, "", "", curCode);
+    		if (cadastrado){
+    			System.out.println("Aluno cadastrado com sucesso");
+    		}else {
+    			System.out.println("Erro ao cadastrar aluno");
+    		}
+    	}
     	closeCadastro(new ActionEvent());
     }
     
     @FXML 
     void closeCadastro(ActionEvent event){
     	this.newStudentPane.setVisible(false);
-    	System.out.println("closeCadastro seu lixo");
     }
     
     @FXML
@@ -185,47 +206,8 @@ public class AdminScreen {
     }
     
     private ObservableList<Requisicao> buscarRequisicoes(){
-    	//TODO: substituir essa funçao por uma busca ao banco com as requisicoes em aberto
-    	ObservableList<Disciplina> list = FXCollections.observableArrayList(
-				new Disciplina("AOO", "N", "Quarta-Feira", "19-23", "Rafael Muniz e Samuel Martins", new String[]{"ESW"}),
-				new Disciplina("BD2", "N", "Terça-Feira", "19-23", "Everton Silva e Carlos Beluzo", new String[]{"BD1"}),
-				new Disciplina("ED1", "N", "Sexta-Feira", "19-23", "José Américo e Samuel Martins", new String[]{"LP2", "BD1"}),
-				new Disciplina("IHC", "N", "Quinta-Feira", "19-21", "José Américo"),
-				new Disciplina("LP3", "N", "Segunda-Feira", "19-23", "Everton Silva e André Valente", new String[]{"LP2"}),
-				new Disciplina("MFI", "N", "Quarta-Feira", "21-23", "Cecília Pereira de Andrade"),
-				new Disciplina("LP1", "N", "Segunda-Feira", "19-23", "Sovat"),
-				new Disciplina("BD1", "N", "Terça-Feira", "19-23", "Zady e Beluzo"),
-				new Disciplina("WEB", "N", "Quinta-Feira", "19-23", "Rafael", new String[]{"LP1"}),
-				new Disciplina("TST", "N", "Quinta-Feira", "21-23", "José"));
-    	ObservableList<Disciplina> list2 = FXCollections.observableArrayList(
-				new Disciplina("AOO", "N", "Quarta-Feira", "19-23", "Rafael Muniz e Samuel Martins", new String[]{"ESW"}),
-				new Disciplina("BD2", "N", "Terça-Feira", "19-23", "Everton Silva e Carlos Beluzo", new String[]{"BD1"}),
-				new Disciplina("ED1", "N", "Sexta-Feira", "19-23", "José Américo e Samuel Martins", new String[]{"LP2", "BD1"}),
-				new Disciplina("IHC", "N", "Quinta-Feira", "19-21", "José Américo"),
-				new Disciplina("LP3", "N", "Segunda-Feira", "19-23", "Everton Silva e André Valente", new String[]{"LP2"}),
-				new Disciplina("MFI", "N", "Quarta-Feira", "21-23", "Cecília Pereira de Andrade"),
-				new Disciplina("LP1", "N", "Segunda-Feira", "19-23", "Sovat"),
-				new Disciplina("BD1", "N", "Terça-Feira", "19-23", "Zady e Beluzo"),
-				new Disciplina("WEB", "N", "Quinta-Feira", "19-23", "Rafael", new String[]{"LP1"}),
-				new Disciplina("TST", "N", "Quinta-Feira", "21-23", "José"));
-    	ObservableList<Disciplina> list3 = FXCollections.observableArrayList(
-				new Disciplina("AOO", "N", "Quarta-Feira", "19-23", "Rafael Muniz e Samuel Martins", new String[]{"ESW"}),
-				new Disciplina("BD2", "N", "Terça-Feira", "19-23", "Everton Silva e Carlos Beluzo", new String[]{"BD1"}),
-				new Disciplina("ED1", "N", "Sexta-Feira", "19-23", "José Américo e Samuel Martins", new String[]{"LP2", "BD1"}),
-				new Disciplina("IHC", "N", "Quinta-Feira", "19-21", "José Américo"),
-				new Disciplina("LP3", "N", "Segunda-Feira", "19-23", "Everton Silva e André Valente", new String[]{"LP2"}),
-				new Disciplina("MFI", "N", "Quarta-Feira", "21-23", "Cecília Pereira de Andrade"),
-				new Disciplina("LP1", "N", "Segunda-Feira", "19-23", "Sovat"),
-				new Disciplina("BD1", "N", "Terça-Feira", "19-23", "Zady e Beluzo"),
-				new Disciplina("WEB", "N", "Quinta-Feira", "19-23", "Rafael", new String[]{"LP1"}),
-				new Disciplina("TST", "N", "Quinta-Feira", "21-23", "José"));
-    	ObservableList<Requisicao> reqList = FXCollections.observableArrayList(
-    			new Requisicao("160000-0",  list),
-    			new Requisicao("160000-1",  list2),
-    			new Requisicao("160000-2",  list3),
-    			new Requisicao("160000-3",  list),
-    			new Requisicao("160000-4",  list));
-    	return reqList;
+    	ObservableList<Requisicao> newreqList = SqlConnector.pesquisarRequisicao();
+    	return newreqList;
     }
 
 }

@@ -18,8 +18,8 @@
   <!-- TODO Add Nodes -->
   <children>
     <Button fx:id="log" layoutY="116.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="Entrar" AnchorPane.rightAnchor="15.0" />
+    <PasswordField fx:id="password" layoutX="272.0" layoutY="64.0" prefHeight="30.0" prefWidth="235.0" promptText="Insira sua Senha..." />
     <TextField fx:id="userName" layoutY="20.0" prefHeight="26.0" prefWidth="249.0" promptText="Insira seu Prontuário..." AnchorPane.rightAnchor="15.0" />
-    <TextField fx:id="password" layoutY="69.0" prefHeight="26.0" prefWidth="222.0" promptText="Insira sua Senha..." visible="true" AnchorPane.rightAnchor="15.0" />
     <Label layoutY="25.0" text="Login" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="274.0" />
     <Label layoutY="74.0" text="Password" AnchorPane.leftAnchor="212.0" />
     <Text fontSmoothingType="LCD" layoutY="-88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema" textAlignment="CENTER" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="397.3876953125">

@@ -7,6 +7,7 @@ import ch.makery.address.model.SqlConnector;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -26,7 +27,7 @@ public class Login {
     private TextField userName;
     
     @FXML
-    private TextField password;
+    private PasswordField password;
     
     @FXML
     private Button log;
@@ -71,7 +72,6 @@ public class Login {
     	
     	String user = userName.getText();
     	String pass = password.getText();
-    	
     	if (user.isEmpty() || user==null){
     		//TODO: Show error message. Login nÃ£o pode ser deixado vazio.
     		System.out.println("Login não pode ser deixado vazio.");
@@ -79,7 +79,7 @@ public class Login {
     		//TODO: Show error message. Passowrd nï¿½o pode ser deixado vazio.
     		System.out.println("Password não pode ser deixado vazio.");
     	} else {
-    		int usrType = SqlConnector.logUser(user);
+    		int usrType = SqlConnector.logUser(user, pass);
     		if (usrType==1){
     			System.out.println("Logado como admin");
     			MainApp.mainInst.loadAdminScreen();

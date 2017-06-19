@@ -164,24 +164,24 @@ public class StudentScreen {
     	return disponiveis; */
     }
     
-    private ObservableList<Disciplina> BuscarOfertadas(){
+    /*private ObservableList<Disciplina> BuscarOfertadas(){
     	//TODO: substituir essa funçao por uma busca ao banco com as disciplinas ofertadas
     	ObservableList<Disciplina> ofertas = FXCollections.observableArrayList(
-    			new Disciplina("AOO", "N", "Quarta-Feira", "19-23", "Rafael Muniz e Samuel Martins", new String[]{"ESW"}),
-    			new Disciplina("BD2", "N", "Terça-Feira", "19-23", "Everton Silva e Carlos Beluzo", new String[]{"BD1"}),
-    			new Disciplina("ED1", "N", "Sexta-Feira", "19-23", "José Américo e Samuel Martins", new String[]{"LP2", "BD1"}),
-    			new Disciplina("IHC", "N", "Quinta-Feira", "19-21", "José Américo"),
-    			new Disciplina("LP3", "N", "Segunda-Feira", "19-23", "Everton Silva e André Valente", new String[]{"LP2"}),
-    			new Disciplina("MFI", "N", "Quarta-Feira", "21-23", "Cecília Pereira de Andrade"),
-    			new Disciplina("LP1", "N", "Segunda-Feira", "19-23", "Sovat"),
-    			new Disciplina("BD1", "N", "Terça-Feira", "19-23", "Zady e Beluzo"),
-    			new Disciplina("WEB", "N", "Quinta-Feira", "19-23", "Rafael", new String[]{"LP1"}),
-    			new Disciplina("TST", "N", "Quinta-Feira", "21-23", "José")
+    			new Disciplina("AOO", "N", "Quarta-Feira", "19-23", "Rafael Muniz e Samuel Martins", new String[]{"ESW"}, 0),
+    			new Disciplina("BD2", "N", "Terça-Feira", "19-23", "Everton Silva e Carlos Beluzo", new String[]{"BD1"}, 334),
+    			new Disciplina("ED1", "N", "Sexta-Feira", "19-23", "José Américo e Samuel Martins", new String[]{"LP2", "BD1"}, 33),
+    			new Disciplina("IHC", "N", "Quinta-Feira", "19-21", "José Américo", 3),
+    			new Disciplina("LP3", "N", "Segunda-Feira", "19-23", "Everton Silva e André Valente", new String[]{"LP2"}, 2),
+    			new Disciplina("MFI", "N", "Quarta-Feira", "21-23", "Cecília Pereira de Andrade", 2),
+    			new Disciplina("LP1", "N", "Segunda-Feira", "19-23", "Sovat", 2),
+    			new Disciplina("BD1", "N", "Terça-Feira", "19-23", "Zady e Beluzo", 3),
+    			new Disciplina("WEB", "N", "Quinta-Feira", "19-23", "Rafael", new String[]{"LP1"}, 2),
+    			new Disciplina("TST", "N", "Quinta-Feira", "21-23", "José", 3)
     	);
     	return ofertas;
-    }
+    }*/
     
-    private ObservableList<Disciplina> filtrarDisciplinas(ObservableList<Disciplina> oferta){
+    /*private ObservableList<Disciplina> filtrarDisciplinas(ObservableList<Disciplina> oferta){
     	Aluno lgd = (Aluno) MainApp.mainInst.user;
     	String[] usrDisc = lgd.consultarMatricula();
     	ObservableList<Disciplina> fn = FXCollections.observableArrayList();
@@ -213,7 +213,7 @@ public class StudentScreen {
     		System.out.println(fn.get(k).getDisciplina());
     	}
     	return fn;
-    }
+    }*/
     
     public void selecionarDisciplina(){
     	Disciplina d = this.avaliableTableView.getSelectionModel().getSelectedItem();
@@ -221,7 +221,7 @@ public class StudentScreen {
     	if (d!=null){
     		for (int i = 0; i<this.disciplinasRequiridas.size(); i++){
     			Disciplina old = this.disciplinasRequiridas.get(i);
-    			if (d.getDia()==old.getDia()){
+    			if (d.getDia().equals(old.getDia()) ){
     				String[] hrNew = d.getHorario().split("-");
     				String[] hrOld = old.getHorario().split("-");
     				if( hrNew[0].equals(hrOld[0]) || hrNew[1].equals(hrOld[1]) ){
@@ -248,8 +248,15 @@ public class StudentScreen {
     }
     
     public void enviarRequisicao(){
-    	//TODO: Enviar itens da lista para a tabela 'requisicoes' no backend como uma nova requisicao.
-    	System.out.println("Requisição enviada com sucesso");
+    	Aluno al = (Aluno) MainApp.mainInst.user;
+    	int codAl = al.getCod();
+    	ObservableList<Disciplina> listDisc = this.selectedTableView.getItems();
+    	for (int i =0; i<listDisc.size(); i++){
+    		int codT = listDisc.get(i).getCodTurma();
+    		SqlConnector.requisitaMatricula(codT, codAl);
+    	}
+    	listDisc = null;
+    	this.selectedTableView.setItems(listDisc);
     }
 
 }

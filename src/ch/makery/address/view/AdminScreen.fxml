@@ -51,11 +51,11 @@
             <Label font="$x1" layoutX="14.0" layoutY="89.0" text="Disciplinas Requisitadas" />
             <TableView id="avaliableTableView" fx:id="reqTableView" layoutX="14.0" layoutY="116.0" prefHeight="175.0" prefWidth="418.0">
               <columns>
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="62.0" text="Disciplina" fx:id="reqDisc" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="43.0" text="Turma" fx:id="reqTurma" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="173.0" text="Professor" fx:id="reqProf" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="89.0" text="Dia" fx:id="reqDia" />
-                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="49.0" text="Horário" fx:id="reqHorario" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="320.0" text="Disciplina" fx:id="reqDisc" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="97.0" text="Turma" visible="true" fx:id="reqTurma" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="173.0" text="Professor" visible="false" fx:id="reqProf" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="89.0" text="Dia" visible="false" fx:id="reqDia" />
+                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="50.0" text="Horário" visible="false" fx:id="reqHorario" />
               </columns>
             </TableView>
             <Label font="$x1" layoutX="14.0" layoutY="302.0" text="Justificativa" />
@@ -78,13 +78,13 @@
         <Label layoutX="30.0" layoutY="184.0" text="Curso" />
         <Label layoutX="30.0" layoutY="234.0" text="Período de Ingresso" />
         <Label layoutX="30.0" layoutY="289.0" text="Endereço de E-Mail" />
-        <Label layoutX="32.0" layoutY="339.0" text="Disciplinas Cursadas" />
+        <Label layoutX="32.0" layoutY="339.0" text="Disciplinas Cursadas" visible="false" />
         <TextField fx:id="newName" layoutX="30.0" layoutY="100.0" prefWidth="200.0" promptText="José Exemplo da Demonstração" />
         <TextField fx:id="newRA" layoutX="30.0" layoutY="152.0" prefWidth="200.0" promptText="123321-0" />
         <TextField fx:id="newCurso" layoutX="30.0" layoutY="200.0" prefWidth="200.0" promptText="EXP" />
         <TextField fx:id="newPeriodo" layoutX="30.0" layoutY="250.0" prefWidth="200.0" promptText="Xs20YZ" />
         <TextField fx:id="newEmail" layoutX="30.0" layoutY="305.0" prefWidth="200.0" promptText="jose@exemplo.com" />
-        <TextField fx:id="newDisciplinas" layoutX="32.0" layoutY="355.0" prefWidth="200.0" promptText="DSP1 DSP2 DSP3 ..." />
+        <TextField fx:id="newDisciplinas" layoutX="32.0" layoutY="355.0" prefWidth="200.0" promptText="DSP1 DSP2 DSP3 ..." visible="false" />
         <Button id="newCadastro" layoutX="639.0" layoutY="437.0" mnemonicParsing="false" onAction="#newCadastro" prefHeight="35.9609375" prefWidth="116.0" style="-fx-background-color: #006600;&#10;-fx-color:#000" text="Cadastrar" />
         <Button id="closeCadastro" layoutX="493.0" layoutY="437.0" mnemonicParsing="false" onAction="#closeCadastro" prefHeight="35.9609375" prefWidth="116.0" text="Cancelar" />
       </children>
